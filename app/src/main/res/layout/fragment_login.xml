@@ -18,7 +18,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.15"
+        app:layout_constraintVertical_bias="0.1"
         />
 
     <com.google.android.material.textfield.TextInputLayout
@@ -51,7 +51,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:hint="@string/email"
+        android:hint="@string/password"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         app:layout_constraintTop_toBottomOf="@id/ilEmail"
         app:layout_constraintStart_toStartOf="@id/ilEmail"
@@ -69,5 +69,48 @@
             />
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvTextRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_register"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/ilPassword"
+        app:layout_constraintBottom_toBottomOf="@id/btLogin"
+        app:layout_constraintStart_toStartOf="@id/ilPassword"
+        app:layout_constraintEnd_toEndOf="@id/ilPassword"
+        app:layout_constraintVertical_bias="0.1"
+        app:layout_constraintHorizontal_bias="0.35"
+        />
+
+    <TextView
+        android:id="@+id/tvButtonRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="6dp"
+        android:text="@string/register"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?attr/selectableItemBackground"
+        app:layout_constraintTop_toTopOf="@id/tvTextRegister"
+        app:layout_constraintBottom_toBottomOf="@id/tvTextRegister"
+        app:layout_constraintStart_toEndOf="@id/tvTextRegister"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btLogin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/login"
+        app:layout_constraintTop_toBottomOf="@id/tvTextRegister"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/ilPassword"
+        app:layout_constraintEnd_toEndOf="@id/ilPassword"
+        app:layout_constraintVertical_bias="0.9"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
