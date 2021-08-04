@@ -1,4 +1,6 @@
 package com.time6.viacepbrasil
 
-class DataCepRecycle {
-}
+data class DataCepRecycle(
+     val info:String,
+     val response:String
+)

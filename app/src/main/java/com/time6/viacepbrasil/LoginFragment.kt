@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.time6.viacepbrasil.databinding.FragmentLoginBinding
 
 class LoginFragment : Fragment() {
@@ -21,6 +22,12 @@ class LoginFragment : Fragment() {
         return binding?.root
     }
 
+    override fun onResume() {
+        super.onResume()
+        binding?.btLogin?.setOnClickListener{
+            findNavController().navigate(R.id.action_loginFragment2_to_homeFragment)
+        }
+    }
 
 
     override fun onDestroyView() {
