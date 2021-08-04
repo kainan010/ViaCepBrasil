@@ -6,11 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.time6.viacepbrasil.adapter.CepItemAdapter
-import com.time6.viacepbrasil.databinding.CepItemBinding
 import com.time6.viacepbrasil.databinding.FragmentHomeBinding
-import kotlin.arrayOf as arrayOf
+import com.time6.viacepbrasil.model.DataCepRecycle
 
 
 class HomeFragment : Fragment() {

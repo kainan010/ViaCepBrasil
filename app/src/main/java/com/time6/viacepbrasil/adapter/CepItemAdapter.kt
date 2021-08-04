@@ -3,7 +3,7 @@ package com.time6.viacepbrasil.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.time6.viacepbrasil.DataCepRecycle
+import com.time6.viacepbrasil.model.DataCepRecycle
 import com.time6.viacepbrasil.databinding.CepItemBinding
 
 class CepItemAdapter (val listaCep :List<DataCepRecycle>):RecyclerView.Adapter<CepItemAdapter.ViewHolder>(){
