@@ -9,11 +9,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.time6.viacepbrasil.adapter.CepItemAdapter
 import com.time6.viacepbrasil.databinding.FragmentHomeBinding
 import com.time6.viacepbrasil.model.DataCepRecycle
+import com.time6.viacepbrasil.model.DataCepResponse
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class HomeFragment : Fragment() {
 
     private var binding: FragmentHomeBinding? = null
+    private lateinit var call: Call<DataCepResponse>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -22,32 +27,66 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding?.root
-
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val listCep = listOf(
-            DataCepRecycle("Cep", "01001-000"),
-            DataCepRecycle("logradouro", "Praça da Sé"),
-            DataCepRecycle("complemento", "lado ímpar"),
-            DataCepRecycle("bairro", "Sé"),
-            DataCepRecycle("localidade", "São Paulo"),
-            DataCepRecycle("uf", "SP"),
-            DataCepRecycle("ibge", "3550308"),
-            DataCepRecycle("gia", "1004"),
-            DataCepRecycle("ddd", "11"),
-            DataCepRecycle("siafi", "7107")
-        )
+        var cep: String?
+        var logradouro: String?
+        var complemento: String?
+        var bairro: String?
+        var localidade: String?
+        var uf: String?
+        var ibge: String?
+        var gia: String?
+        var ddd: String?
+        var siafi: String?
+
+        binding?.run {
+            btHomeFragmentButton.setOnClickListener {
+                call = RetrofitBuilder().service().getAdressByCEP(ilHomeFragmentCep.editText?.text.toString())
+                call.enqueue(object : Callback<DataCepResponse> {
+                    override fun onResponse(
+                        call: Call<DataCepResponse>,
+                        response: Response<DataCepResponse>
+                    ) {
+                        val body = response?.body()
+
+                        cep = body?.cep
+                        logradouro = body?.logradouro
+                        complemento = body?.complemento
+                        bairro = body?.bairro
+                        localidade = body?.localidade
+                        uf = body?.uf
+                        ibge = body?.ibge
+                        gia = body?.gia
+                        ddd = body?.ddd
+                        siafi = body?.siafi
+
+                        val listCep = mutableListOf(
+                            DataCepRecycle("Cep", cep),
+                            DataCepRecycle("logradouro", logradouro),
+                            DataCepRecycle("complemento", complemento),
+                            DataCepRecycle("bairro", bairro),
+                            DataCepRecycle("localidade", localidade),
+                            DataCepRecycle("uf", uf),
+                            DataCepRecycle("ibge", ibge),
+                            DataCepRecycle("gia", gia),
+                            DataCepRecycle("ddd", ddd),
+                            DataCepRecycle("siafi", siafi)
+                        )
 
 
 
-        val adapter = CepItemAdapter(listCep)
-        binding?.rvHomeFragmentDatalist?.layoutManager = LinearLayoutManager(requireContext())
-            binding?.rvHomeFragmentDatalist?.adapter = adapter
+                        val adapter = CepItemAdapter(listCep)
+                        rvHomeFragmentDatalist.layoutManager = LinearLayoutManager(requireContext())
+                        rvHomeFragmentDatalist.adapter = adapter
+                    }
+
+                    override fun onFailure(call: Call<DataCepResponse>, t: Throwable) {}
+                })
+            }
+        }
     }
-
-
 }
