@@ -32,17 +32,6 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var cep: String?
-        var logradouro: String?
-        var complemento: String?
-        var bairro: String?
-        var localidade: String?
-        var uf: String?
-        var ibge: String?
-        var gia: String?
-        var ddd: String?
-        var siafi: String?
-
         binding?.run {
             btHomeFragmentButton.setOnClickListener {
                 call = RetrofitBuilder().service().getAdressByCEP(ilHomeFragmentCep.editText?.text.toString())
@@ -51,37 +40,24 @@ class HomeFragment : Fragment() {
                         call: Call<DataCepResponse>,
                         response: Response<DataCepResponse>
                     ) {
-                        val body = response?.body()
+                        response.body().let { body ->
+                            val listCep = mutableListOf(
+                                DataCepRecycle("Cep", body?.cep),
+                                DataCepRecycle("logradouro", body?.logradouro),
+                                DataCepRecycle("complemento", body?.complemento),
+                                DataCepRecycle("bairro", body?.bairro),
+                                DataCepRecycle("localidade", body?.localidade),
+                                DataCepRecycle("uf", body?.uf),
+                                DataCepRecycle("ibge", body?.ibge),
+                                DataCepRecycle("gia", body?.gia),
+                                DataCepRecycle("ddd", body?.ddd),
+                                DataCepRecycle("siafi", body?.siafi)
+                            )
 
-                        cep = body?.cep
-                        logradouro = body?.logradouro
-                        complemento = body?.complemento
-                        bairro = body?.bairro
-                        localidade = body?.localidade
-                        uf = body?.uf
-                        ibge = body?.ibge
-                        gia = body?.gia
-                        ddd = body?.ddd
-                        siafi = body?.siafi
-
-                        val listCep = mutableListOf(
-                            DataCepRecycle("Cep", cep),
-                            DataCepRecycle("logradouro", logradouro),
-                            DataCepRecycle("complemento", complemento),
-                            DataCepRecycle("bairro", bairro),
-                            DataCepRecycle("localidade", localidade),
-                            DataCepRecycle("uf", uf),
-                            DataCepRecycle("ibge", ibge),
-                            DataCepRecycle("gia", gia),
-                            DataCepRecycle("ddd", ddd),
-                            DataCepRecycle("siafi", siafi)
-                        )
-
-
-
-                        val adapter = CepItemAdapter(listCep)
-                        rvHomeFragmentDatalist.layoutManager = LinearLayoutManager(requireContext())
-                        rvHomeFragmentDatalist.adapter = adapter
+                            val adapter = CepItemAdapter(listCep)
+                            rvHomeFragmentDatalist.layoutManager = LinearLayoutManager(requireContext())
+                            rvHomeFragmentDatalist.adapter = adapter
+                        }
                     }
 
                     override fun onFailure(call: Call<DataCepResponse>, t: Throwable) {}
