@@ -44,7 +44,7 @@ class HomeFragment : Fragment() {
                             val listCep = mutableListOf(
                                 DataCepRecycle("Cep", body?.cep),
                                 DataCepRecycle("logradouro", body?.logradouro),
-                                DataCepRecycle("complemento", "Batatinha quando nasce se esparrama pelo chão"),
+                                DataCepRecycle("complemento", body?.complemento),
                                 DataCepRecycle("bairro", body?.bairro),
                                 DataCepRecycle("localidade", body?.localidade),
                                 DataCepRecycle("uf", body?.uf),
