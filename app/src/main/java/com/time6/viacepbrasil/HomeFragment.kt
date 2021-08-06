@@ -49,9 +49,8 @@ class HomeFragment : Fragment() {
                                 DataCepRecycle("localidade", body?.localidade),
                                 DataCepRecycle("uf", body?.uf),
                                 DataCepRecycle("ibge", body?.ibge),
-                                DataCepRecycle("gia", body?.gia),
-                                DataCepRecycle("ddd", body?.ddd),
-                                DataCepRecycle("siafi", body?.siafi)
+                                DataCepRecycle("ddd", body?.ddd)
+
                             )
 
                             val adapter = CepItemAdapter(listCep)
