@@ -42,14 +42,14 @@ class HomeFragment : Fragment() {
                     ) {
                         response.body().let { body ->
                             val listCep = mutableListOf(
-                                DataCepRecycle("Cep", body?.cep),
-                                DataCepRecycle("logradouro", body?.logradouro),
-                                DataCepRecycle("complemento", body?.complemento),
-                                DataCepRecycle("bairro", body?.bairro),
-                                DataCepRecycle("localidade", body?.localidade),
-                                DataCepRecycle("uf", body?.uf),
-                                DataCepRecycle("ibge", body?.ibge),
-                                DataCepRecycle("ddd", body?.ddd)
+                                DataCepRecycle("CEP:", body?.cep),
+                                DataCepRecycle("Logradouro:", body?.logradouro),
+                                DataCepRecycle("Complemento:", body?.complemento),
+                                DataCepRecycle("Bairro:", body?.bairro),
+                                DataCepRecycle("Localidade:", body?.localidade),
+                                DataCepRecycle("UF:", body?.uf),
+                                DataCepRecycle("IBGE:", body?.ibge),
+                                DataCepRecycle("DDD:", body?.ddd)
                             )
 
                             val adapter = CepItemAdapter(listCep)
