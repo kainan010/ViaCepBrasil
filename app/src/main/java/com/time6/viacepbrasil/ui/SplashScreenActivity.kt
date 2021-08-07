@@ -1,9 +1,10 @@
-package com.time6.viacepbrasil
+package com.time6.viacepbrasil.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import com.time6.viacepbrasil.R
 
 class SplashScreenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

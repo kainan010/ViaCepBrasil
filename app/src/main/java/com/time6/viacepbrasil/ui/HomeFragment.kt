@@ -1,4 +1,4 @@
-package com.time6.viacepbrasil
+package com.time6.viacepbrasil.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.time6.viacepbrasil.adapter.CepItemAdapter
+import com.time6.viacepbrasil.api.RetrofitBuilder
 import com.time6.viacepbrasil.databinding.FragmentHomeBinding
 import com.time6.viacepbrasil.model.DataCepRecycle
 import com.time6.viacepbrasil.model.DataCepResponse

@@ -1,4 +1,4 @@
-package com.time6.viacepbrasil
+package com.time6.viacepbrasil.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.time6.viacepbrasil.R
 import com.time6.viacepbrasil.databinding.FragmentLoginBinding
 
 class LoginFragment : Fragment() {

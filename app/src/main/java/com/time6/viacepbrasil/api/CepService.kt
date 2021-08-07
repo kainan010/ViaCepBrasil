@@ -1,4 +1,4 @@
-package com.time6.viacepbrasil
+package com.time6.viacepbrasil.api
 
 import com.time6.viacepbrasil.model.DataCepResponse
 import retrofit2.Call
