@@ -1,4 +1,4 @@
-package com.time6.viacepbrasil.adapter
+package com.time6.viacepbrasil.features.home.view.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

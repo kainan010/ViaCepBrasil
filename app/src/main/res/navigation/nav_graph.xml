@@ -6,7 +6,7 @@
     app:startDestination="@id/loginFragment2">
     <fragment
         android:id="@+id/loginFragment2"
-        android:name="com.time6.viacepbrasil.ui.LoginFragment"
+        android:name="com.time6.viacepbrasil.features.login.view.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.time6.viacepbrasil.ui.HomeFragment"
+        android:name="com.time6.viacepbrasil.features.home.view.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
 </navigation>

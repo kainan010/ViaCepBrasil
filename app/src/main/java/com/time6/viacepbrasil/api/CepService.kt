@@ -7,5 +7,5 @@ import retrofit2.http.Path
 
 interface CepService {
     @GET("{CEP}/json/")
-    fun getAdressByCEP(@Path("CEP") CEP: String) : Call<DataCepResponse>
+    fun getAddressByCEP(@Path("CEP") CEP: String) : Call<DataCepResponse>
 }

@@ -1,4 +1,4 @@
-package com.time6.viacepbrasil.ui
+package com.time6.viacepbrasil.features.login.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

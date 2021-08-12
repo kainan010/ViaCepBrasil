@@ -17,7 +17,7 @@
 
         <TextView
             android:id="@+id/tvCepItemResponse"
-            android:layout_width="200dp"
+            android:layout_width="260dp"
             android:layout_height="wrap_content"
             tools:text="Response"
             android:textSize="18sp"
