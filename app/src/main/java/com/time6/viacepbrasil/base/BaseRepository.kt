@@ -8,12 +8,11 @@ import java.lang.Exception
 
 open class BaseRepository {
 
-    suspend fun <T> safeApiCall(call: suspend () -> Response<T>) = safeApiResult(call)
+    suspend fun <T : Any> safeApiCall(call: suspend () -> Response<T>) = safeApiResult(call)
 
-    private suspend fun <T> safeApiResult(call: suspend () -> Response<T>) : ResponseApi {
+    private suspend fun <T: Any> safeApiResult(call: suspend ()-> Response<T>) : ResponseApi {
 
         try {
-
             val response = call.invoke()
 
             return if (response.isSuccessful) {
@@ -21,16 +20,15 @@ open class BaseRepository {
             } else {
                 val error = ErrorUtils.parseError(response)
 
-                error?.message?.let {  message ->
+                error?.message?.let { message ->
                     ResponseApi.Error(message)
                 } ?: run {
                     ResponseApi.Error(R.string.error_default)
                 }
             }
-
-
-        } catch (e: Exception) { return ResponseApi.Error(R.string.error_default) }
-
+        } catch (error: Exception) {
+            return ResponseApi.Error(R.string.error_default)
+        }
     }
 
 }

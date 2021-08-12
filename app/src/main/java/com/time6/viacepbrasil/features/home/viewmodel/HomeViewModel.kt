@@ -7,11 +7,11 @@ import com.time6.viacepbrasil.model.CepResponseModel
 import kotlinx.coroutines.launch
 
 class HomeViewModel : ViewModel() {
-
+    var cepResponseModel: CepResponseModel? = null
     private val homeModel = HomeModel()
 
-    fun getAddressByCepCoroutines(CEP: String) : CepResponseModel? {
-        var cepResponseModel: CepResponseModel? = null
+    fun getAddressByCepCoroutines(CEP: String ) : CepResponseModel? {
+
 
         viewModelScope.launch {
             cepResponseModel = homeModel.getAddressByCepCoroutines(CEP)

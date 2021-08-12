@@ -6,9 +6,10 @@ import com.time6.viacepbrasil.utils.ResponseApi
 
 class HomeRepository : BaseRepository() {
 
-    suspend fun getAddressByCepCoroutines(CEP: String) : ResponseApi =
-        safeApiCall {
+    suspend fun getAddressByCepCoroutines(CEP: String) : ResponseApi {
+     return  safeApiCall {
             CepServiceCoroutines.cep.getAddressByCepCoroutines(CEP)
         }
+    }
 
 }
