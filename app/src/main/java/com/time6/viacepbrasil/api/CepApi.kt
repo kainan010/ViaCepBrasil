@@ -1,6 +1,6 @@
 package com.time6.viacepbrasil.api
 
-import com.time6.viacepbrasil.model.CepResponseModel
+import com.time6.viacepbrasil.datamodel.CepResponseModel
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path

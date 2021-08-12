@@ -1,4 +1,4 @@
-package com.time6.viacepbrasil.ui
+package com.time6.viacepbrasil.features
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

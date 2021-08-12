@@ -3,7 +3,7 @@ package com.time6.viacepbrasil.features.home.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.time6.viacepbrasil.features.home.model.HomeModel
-import com.time6.viacepbrasil.model.CepResponseModel
+import com.time6.viacepbrasil.datamodel.CepResponseModel
 import kotlinx.coroutines.launch
 
 class HomeViewModel : ViewModel() {

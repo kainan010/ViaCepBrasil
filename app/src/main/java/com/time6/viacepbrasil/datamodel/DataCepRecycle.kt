@@ -1,4 +1,4 @@
-package com.time6.viacepbrasil.model
+package com.time6.viacepbrasil.datamodel
 
 data class DataCepRecycle(
      val info: String?,

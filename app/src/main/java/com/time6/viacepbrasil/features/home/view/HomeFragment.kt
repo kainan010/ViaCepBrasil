@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.time6.viacepbrasil.databinding.FragmentHomeBinding
 import com.time6.viacepbrasil.features.home.view.adapter.CepItemAdapter
 import com.time6.viacepbrasil.features.home.viewmodel.HomeViewModel
-import com.time6.viacepbrasil.model.DataCepRecycle
+import com.time6.viacepbrasil.datamodel.DataCepRecycle
 
 
 class HomeFragment : Fragment() {
@@ -33,6 +33,10 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        activity?.let {
+            viewModel = ViewModelProvider(it).get(HomeViewModel::class.java)
+        }
 
         binding?.run {
             btHomeFragmentButton.setOnClickListener {
@@ -69,33 +73,30 @@ class HomeFragment : Fragment() {
 //                    override fun onFailure(call: Call<DataCepResponse>, t: Throwable) {}
 //                })
 
-                activity?.let {
-                    viewModel = ViewModelProvider(it).get(HomeViewModel::class.java)
-
-                    viewModel.getAddressByCepCoroutines(ilHomeFragmentCep.editText?.text.toString())?.let { CepResponseModel ->
-                        val listCep = mutableListOf(
-                            DataCepRecycle("CEP:", CepResponseModel.cep),
-                            DataCepRecycle("Logradouro:", CepResponseModel.logradouro),
-                            DataCepRecycle("Complemento:", CepResponseModel.complemento),
-                            DataCepRecycle("Bairro:", CepResponseModel.bairro),
-                            DataCepRecycle("Localidade:", CepResponseModel.localidade),
-                            DataCepRecycle("UF:", CepResponseModel.uf),
-                            DataCepRecycle("IBGE:", CepResponseModel.ibge),
-                            DataCepRecycle("DDD:", CepResponseModel.ddd)
-                        )
-
-                        val adapter = CepItemAdapter(listCep)
-                        rvHomeFragmentDatalist.layoutManager = LinearLayoutManager(requireContext())
-                        rvHomeFragmentDatalist.adapter = adapter
-                    }
-
-                    val imm: InputMethodManager =
-                        activity?.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-                    if (imm.isActive()) imm.toggleSoftInput(
-                        InputMethodManager.HIDE_IMPLICIT_ONLY,
-                        0
+                viewModel.getAddressByCepCoroutines(ilHomeFragmentCep.editText?.text.toString())?.let { CepResponseModel ->
+                    val listCep = mutableListOf(
+                        DataCepRecycle("CEP:", CepResponseModel.cep),
+                        DataCepRecycle("Logradouro:", CepResponseModel.logradouro),
+                        DataCepRecycle("Complemento:", CepResponseModel.complemento),
+                        DataCepRecycle("Bairro:", CepResponseModel.bairro),
+                        DataCepRecycle("Localidade:", CepResponseModel.localidade),
+                        DataCepRecycle("UF:", CepResponseModel.uf),
+                        DataCepRecycle("IBGE:", CepResponseModel.ibge),
+                        DataCepRecycle("DDD:", CepResponseModel.ddd)
                     )
+
+                    val adapter = CepItemAdapter(listCep)
+                    rvHomeFragmentDatalist.layoutManager = LinearLayoutManager(requireContext())
+                    rvHomeFragmentDatalist.adapter = adapter
                 }
+
+                val imm: InputMethodManager =
+                    activity?.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+                if (imm.isActive()) imm.toggleSoftInput(
+                    InputMethodManager.HIDE_IMPLICIT_ONLY,
+                    0
+                )
+
             }
         }
     }

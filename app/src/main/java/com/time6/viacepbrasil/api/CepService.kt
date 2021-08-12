@@ -3,7 +3,7 @@ package com.time6.viacepbrasil.api
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object CepServiceCoroutines {
+object CepService {
 
     val cep = cepApiClient.create(CepApi::class.java)
 
