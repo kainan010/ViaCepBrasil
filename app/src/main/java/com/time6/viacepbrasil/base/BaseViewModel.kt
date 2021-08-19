@@ -9,7 +9,7 @@ import kotlinx.coroutines.withContext
 
 open class BaseViewModel : ViewModel() {
 
-    private lateinit var command: MutableLiveData<Command>
+    val command by lazy { MutableLiveData<Command>() }
 
     suspend fun <T> T.callApi(
         call: suspend ()-> ResponseApi,

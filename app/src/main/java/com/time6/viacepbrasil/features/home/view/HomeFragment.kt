@@ -19,8 +19,6 @@ import com.time6.viacepbrasil.features.home.viewmodel.HomeViewModel
 class HomeFragment : Fragment() {
 
     private var binding: FragmentHomeBinding? = null
-
-    //    private lateinit var call: Call<DataCepResponse>
     private lateinit var viewModel: HomeViewModel
 
     override fun onCreateView(
